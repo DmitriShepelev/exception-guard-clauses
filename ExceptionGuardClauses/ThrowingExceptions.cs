@@ -94,9 +94,11 @@ namespace ExceptionGuardClauses
 
             if (indexArrayPosition < 0 || indexArrayPosition >= indexArray.Length)
             {
+#pragma warning disable S112 // General exceptions should never be thrown
 #pragma warning disable CA2201 // Do not raise reserved exception types
                 throw new IndexOutOfRangeException($"{nameof(indexArrayPosition)} is out of range.");
 #pragma warning restore CA2201 // Do not raise reserved exception types
+#pragma warning restore S112 // General exceptions should never be thrown
             }
 
             int position = indexArray[indexArrayPosition];
@@ -104,7 +106,9 @@ namespace ExceptionGuardClauses
             if (position < 0 || position >= valueArray.Length)
             {
 #pragma warning disable CA2201 // Do not raise reserved exception types
+#pragma warning disable S112 // General exceptions should never be thrown
                 throw new IndexOutOfRangeException("position is out of range.");
+#pragma warning restore S112 // General exceptions should never be thrown
 #pragma warning restore CA2201 // Do not raise reserved exception types
             }
 
